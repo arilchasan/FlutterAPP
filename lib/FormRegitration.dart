@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/SecondPage.dart';
 
 class FormRegistration extends StatefulWidget {
   const FormRegistration({Key? key}) : super(key: key);
@@ -10,21 +11,22 @@ class FormRegistration extends StatefulWidget {
 class _MyWidgetState extends State<FormRegistration> {
   TextEditingController ctrUsername = new TextEditingController();
   TextEditingController ctrPassword = new TextEditingController();
-  
+
   int id = 1;
+  String myphone = "-";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Form Registration')),
-        body: Container(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container (
           margin: EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
                 controller: ctrUsername,
-                obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Username',
@@ -72,8 +74,20 @@ class _MyWidgetState extends State<FormRegistration> {
                   Text("Female")
                 ],
               ),
+              Text("Phone : " + myphone),
+              ElevatedButton(
+                  onPressed: () async {
+                    final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const SecondRoute())));
+                    print("Hasil Input Nomer : " + result.toString());
+                    setState(() {
+                      myphone = result.toString();
+                    });
+                  },
+                  child: Text("Phone Number")),
               Center(
-
                 child: Container(
                   width: 200,
                   child: ElevatedButton(
@@ -84,6 +98,8 @@ class _MyWidgetState extends State<FormRegistration> {
               ),
             ],
           ),
+          )
         ));
+        
   }
 }

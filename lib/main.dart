@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/FormRegitration.dart';
 import 'package:flutter_application_1/Luas.dart';
+import 'package:flutter_application_1/SecondPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +27,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const bangundatar());
+        home: const FormRegistration());
   }
 }
